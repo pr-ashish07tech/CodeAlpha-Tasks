@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citizen CT-512 Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <main class="calc" id="calc" aria-label="Citizen calculator">
+
+    <!-- Display panel -->
+    <section class="panel">
+      <div class="lcd">
+        <div class="indicators">
+          <span id="ind-m">M</span>
+          <span id="ind-gt">GT</span>
+          <span id="ind-neg">-</span>
+          <span id="ind-e">E</span>
+          <span id="ind-chk">CHECK</span>
+        </div>
+        <div class="screen" id="screen" aria-live="polite">0.</div>
+        <div class="brand">
+          <b>CITIZEN</b>
+          <i>CT-512</i>
+          <small>CHECK &amp; CORRECT<br>CALCULATOR</small>
+        </div>
+      </div>
+      <div class="large-label">LARGE DISPLAY</div>
+    </section>
+
+    <!-- Check / Correct / Solar -->
+    <section class="top-row">
+      <button class="key blue check" data-k="check"><span>CHECK</span><em>&rarr;</em></button>
+      <button class="key blue correct" data-k="correct">
+        <span>CORRECT<u>DELETE</u></span><em class="bar"></em>
+      </button>
+      <div class="solar"></div>
+    </section>
+
+    <!-- Keypad -->
+    <section class="keys">
+      <div class="group left">
+        <button class="key grey" data-k="gt">GT</button>
+        <button class="key grey" data-k="mu">MU</button>
+        <button class="key grey" data-k="sign">+/&minus;</button>
+        <button class="key grey" data-k="sqrt">&radic;x</button>
+        <button class="key ce" data-k="ce">CE</button>
+      </div>
+
+      <div class="group nums">
+        <button class="key" data-k="7">7</button>
+        <button class="key" data-k="8">8</button>
+        <button class="key" data-k="9">9</button>
+        <button class="key" data-k="4">4</button>
+        <button class="key" data-k="5">5</button>
+        <button class="key" data-k="6">6</button>
+        <button class="key" data-k="1">1</button>
+        <button class="key" data-k="2">2</button>
+        <button class="key" data-k="3">3</button>
+        <button class="key" data-k="0">0</button>
+        <button class="key" data-k="00">00</button>
+        <button class="key" data-k=".">&bull;</button>
+      </div>
+
+      <div class="group ops">
+        <button class="key" data-k="/">&divide;</button>
+        <button class="key small" data-k="replay">AUTO<br>REPLAY</button>
+        <button class="key teal" data-k="ac"><span>ON</span><span>AC</span></button>
+
+        <button class="key" data-k="*">&times;</button>
+        <button class="key" data-k="%">%</button>
+        <button class="key mem" data-k="mrc">M<sup>R</sup><sub>C</sub></button>
+
+        <button class="key tall" data-k="+">+</button>
+        <button class="key" data-k="-">&minus;</button>
+        <button class="key mem" data-k="m-">M<sub>&minus;</sub></button>
+
+        <button class="key" data-k="=">=</button>
+        <button class="key mem" data-k="m+">M<sub>+</sub></button>
+      </div>
+    </section>
+  </main>
+
+  <script src="background.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
