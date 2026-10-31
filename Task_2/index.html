@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PicsKala — Image Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <h1>PicsKala</h1>
+    <p class="tagline">A quiet gallery of books, boughs and brick. Add your own pictures and keep them here.</p>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Gallery controls">
+      <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+      <div class="actions">
+        <input type="search" id="search" placeholder="Search captions" aria-label="Search captions">
+        <button class="btn primary" id="openAdd" type="button">Add image</button>
+      </div>
+    </section>
+
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nothing here yet. Clear the search or add a new image.</p>
+  </main>
+
+  <!-- Add image dialog -->
+  <dialog id="addDialog">
+    <form id="addForm" method="dialog">
+      <h2>Add an image</h2>
+      <label>Upload a file
+        <input type="file" id="fileInput" accept="image/*">
+      </label>
+      <label>or paste an image URL
+        <input type="url" id="urlInput" placeholder="https://…">
+      </label>
+      <label>Caption
+        <input type="text" id="captionInput" maxlength="60" required placeholder="e.g. Reading by the window">
+      </label>
+      <label>Category
+        <select id="categoryInput"></select>
+      </label>
+      <div class="dialog-actions">
+        <button class="btn" type="button" id="cancelAdd">Cancel</button>
+        <button class="btn primary" type="submit">Save to gallery</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button class="lb-btn close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lb-btn prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption>
+        <span id="lbCaption"></span>
+        <span class="lb-meta" id="lbMeta"></span>
+      </figcaption>
+    </figure>
+    <button class="lb-btn next" id="lbNext" aria-label="Next image">&#8250;</button>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
