@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>धुन - Music Player</title>
+    <link rel="icon" type="image/png" href="Fav.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-container">
+        <img src="Bgimg.png" alt="Dhun Background" class="bg-image">
+        <div class="overlay"></div> 
+    </div>
+
+    <header class="navbar">
+        <div class="brand"><h1 class="logo-text">धुन</h1></div>
+        <nav class="nav-links">
+            <a href="#about"><i class="fa-solid fa-circle-info"></i> About</a>
+            <a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        </nav>
+        <div class="external-platforms">
+            <span>Listen More On:</span>
+            <a class="platform spotify" href="https://open.spotify.com" target="_blank" rel="noopener" title="Spotify"><i class="fa-brands fa-spotify"></i></a>
+            <a class="platform ytmusic" href="https://music.youtube.com/" target="_blank" rel="noopener" title="YouTube Music"><i class="fa-brands fa-youtube"></i></a>
+            <a class="platform saavn" href="https://jiosaavn.com/" target="_blank" rel="noopener" title="JioSaavn"><i class="fa-solid fa-music"></i></a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="player-card">
+            <div class="album-art-container">
+                <img id="cover-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Album Cover">
+                <button id="favorite-btn" class="fav-btn" title="Add to Favorites"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="track-details">
+                <h2 id="song-title">Select a Song</h2>
+                <p id="song-artist">Artist Name</p>
+            </div>
+            <div class="progress-section">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.1">
+                <span id="duration">0:00</span>
+            </div>
+            <div class="controls">
+                <button id="shuffle-btn" class="icon-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+                <button id="prev-btn" class="icon-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+                <button id="play-btn" class="play-pause-btn" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+                <button id="next-btn" class="icon-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+                <button id="repeat-btn" class="icon-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+            </div>
+            <div class="volume-container">
+                <i id="volume-icon" class="fa-solid fa-volume-high" title="Mute / Unmute"></i>
+                <input type="range" id="volume-bar" value="80" min="0" max="100">
+            </div>
+        </section>
+
+        <section class="playlist-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search Hindi songs or artists...">
+            </div>
+            <div class="tabs">
+                <button id="tab-all" class="tab-btn active"><i class="fa-solid fa-list"></i> All Songs</button>
+                <button id="tab-fav" class="tab-btn"><i class="fa-solid fa-heart"></i> Favorites (<span id="fav-count">0</span>)</button>
+            </div>
+            <div class="song-list-wrapper"><ul id="playlist" class="song-list"></ul></div>
+            <button id="add-btn" class="add-btn"><i class="fa-solid fa-folder-plus"></i> Add songs from device</button>
+            <input type="file" id="file-input" accept="audio/*" multiple hidden>
+        </section>
+    </main>
+
+    <section class="info" id="about">
+        <h2>About</h2>
+        <p>धुन is a Music player. Pick a song from the playlist, save the ones you love to Favorites, and keep listening on Spotify, YouTube Music or JioSaavn from the links above.</p>
+    </section>
+    <section class="info" id="faq">
+        <h2>FAQ</h2>
+        <details><summary>A song is not playing. Why?</summary><p>Each song plays from its own file in the <b>songs</b> folder, named like <b>kesariya.mp3</b>. If the file is missing, the player shows "Audio file not found".</p></details>
+        <details><summary>How do I add my own songs?</summary><p>Tap "Add songs from device". Files are matched to songs by name (Kesariya.mp3 plays as Kesariya). Unmatched files are added as new songs.</p></details>
+        <details><summary>Are my favorites saved?</summary><p>Yes. They stay in this browser after you refresh the page.</p></details>
+    </section>
+
+    <footer class="footer">
+        <p>Connect With Us:</p>
+        <div class="social-links">
+            <a class="platform insta" href="https://www.instagram.com/ashish_0x3/" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a class="platform wa" href="https://wa.me/916386172409" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a class="platform call" href="tel:+916386172409" title="Call Us"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+    <audio id="audio-player" preload="metadata"></audio>
+
+    <script src="songs.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
